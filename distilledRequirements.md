@@ -7,8 +7,8 @@ _(not in priority order)_
 - **REQ1.2**: The system is always available with 99.9% uptime.
 - **REQ1.3**: The system must provide fast response times (<2 seconds, 95% percentile) for user interactions.
 - **REQ1.4**: The system ensures that no data loss or corruption occurs during processing.
-- **REQ1.5**: The platform supports multi-device access, including desktop, tablet, and mobile.
-- **REQ1.6**: The system is compliant with WCAG 2.1 accessibility standards.
+- ~~- **REQ1.5**: The platform supports multi-device access, including desktop, tablet, and mobile.~~
+- ~~- **REQ1.6**: The system is compliant with WCAG 2.1 accessibility standards.~~
 
 ### 2. AI Capabilities
 - **REQ2.1**: The AI must be capable of anonymizing resumes by removing racial, cultural, and lifestyle indicators.
@@ -23,7 +23,7 @@ _(not in priority order)_
 - **REQ3.3**: Job seekers must be able to view the number of employer interactions (e.g., profile views, expressions of interest).
 - **REQ3.4**: Job seekers must receive job matches based on AI-determined similarity scores.
 - **REQ3.5**: Job seekers can express interest in jobs anonymously before submitting a formal application.
-- **REQ3.6**: Job seekers can apply for jobs through the system when ready.
+- ~~- **REQ3.6**: Job seekers can apply for jobs through the system when ready.~~
 - **REQ3.7**: Job seekers must be able to mark themselves as inactive when hired.
 - **REQ3.8**: Job seekers can receive AI-generated resume tips and feedback to improve their profiles.
 

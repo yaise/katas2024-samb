@@ -70,9 +70,6 @@ ClearView aims to provide a more equitable hiring experience by leveraging AI to
 | DEI | Diversity, Equity, and Inclusion |
 | ATS | Applicant Tracking System |
 
-### 1.4 References
-- [Requirements](https://docs.google.com/document/d/1jCHMAvgzqaYaAp09br12OC4ozpVXZR3s9ezgEqncZ9U/edit#heading=h.xvbdsi1e8ttg)
-- [Presentation Slides](https://on24static.akamaized.net/event/46/37/41/6/rt/1/documents/resourceList1726751953205/todayskatasslides1726751953205.pdf)
 
 ## 2. Overall Description
 
