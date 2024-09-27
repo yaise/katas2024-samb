@@ -93,10 +93,10 @@ Here is a logical model of the system that explores key entities (a logical enti
 - A user can optionally belong to an organization(employer). 
     - A Hiring manager will belong to an organization(Employer). 
     - A DEI consultant may belong to an organization.
-    - A Candidate and System Admin don't necessarily belong to an employer but may be part of an internal Organization(for ex. ClearWorks)
+    - A Candidate and System Admin don't necessarily belong to an employer but may be part of an internal Organization(for ex. ClearView)
 - A Hiring Manger manages a job posting that is owned by an Employer
 - A Candidate is matched with a Job Posting. 
-- A Candidate, job posting and employer each have profiles. Profiles can be public or private(until made viewable)
+- A Candidate, job posting and employer each have profiles. Profiles can be private ( but viewable to a Hiring Manager post payments ) or public(anonymized view of the private profile)
 - A candidate owns the survey results posted by Hiring Managers.
 - A Hiring Manager owns the survey results posted by Candidates.
 - Metrics are collected pertaining to a particular job posting for ex. candidate acceptance/rejection, candidate unlocks.  
