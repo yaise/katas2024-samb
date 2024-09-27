@@ -11,7 +11,7 @@ Diversity Cyber council wants to build ClearView, a HR platform that performs bi
 | ATS  | Applicant Tracking System        |
 | LLM  | Large Language Model             |
 | HR   | Human Resource                   |
-| KPI  | Key Perfomance Indicator         |
+| KPI  | Key Performance Indicator        |
 
 ## System Context
 ```mermaid
@@ -126,6 +126,7 @@ Here is a logical model of the system that explores key entities (a logical enti
 - Metrics are collected pertaining to a particular job posting for ex. candidate acceptance/rejection, candidate unlocks. 
 - Observability signals are collected for System maintainability.
 - LLM Metrics are collected to ensure the Accuracy of the external LLM system.
+
 
 ## Architectural Style
 TODO: Reference https://www.developertoarchitect.com/downloads/architecture-styles-worksheet.pdf and our priorities and state where we landed
