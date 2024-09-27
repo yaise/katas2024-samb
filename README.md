@@ -86,7 +86,7 @@ TODO - Add a blurb of text as to why we chose this ?
 ## WIP - Solution
 ### Logical Model
 Here is a logical model of the system that explores key entities(a logical entity and not necessarily one from database parlance) and their relationships to inform APIs and data models.
-**Note:** Some relationships adopt crow's foot notation just for clarity sakes.
+**Note:** Some relationships adopt crow's foot notation just for clarity's sake.
 **Note:** Some elements in the diagram may just be key attributes of an entity. Example a profile is a key attribute of a Candidate.
 ![katas2024 logical model.png](./resources/katas2024-logical-model.png)
 - The system has multiple user with different roles - Candidate, Hiring Manager, DEI consultant, System Admin. 
