@@ -60,7 +60,7 @@ The system aims to serve the following user journeys:
 ### Functional 
 The following is a list of distilled requirements
 - **REQ1**: Candidate must be able to create a profile by providing demographic, contact, and resume information.
-- **REQ2**: Candidate can upload and update their resume in the system receive AI-generated  tips and feedback to improve it.
+- **REQ2**: Candidate can upload and update their resume in the system, and receive AI-generated tips and feedback to improve it.
 - **REQ3**: Candidate must be able to view the number of employer interactions (e.g., profile views, expressions of interest).
 - **REQ4**: Candidate must be able to mark themselves as inactive when hired.
 - **REQ5**: Employers must be able to create a company profile through AI-assisted autofill.
