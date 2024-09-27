@@ -99,7 +99,7 @@ Here is a logical model of the system that explores key entities(a logical entit
 - Metrics are collected pertaining to a particular job posting for ex. candidate acceptance/rejection, candidate unlocks.  
 
 ## Architectural Style
-
+TODO: Reference https://www.developertoarchitect.com/downloads/architecture-styles-worksheet.pdf and our priorities and state where we landed
 
 ## References
 - [Requirements](https://docs.google.com/document/d/1jCHMAvgzqaYaAp09br12OC4ozpVXZR3s9ezgEqncZ9U/edit#heading=h.xvbdsi1e8ttg)
