@@ -41,11 +41,12 @@ The system aims to serve the following user journeys:
 - A Hiring Manager registers themselves on the site.
 - They register the employer on the platform. An AI can assist them with completing the profile of the employer.
 - They can manage job postings i.e. Create, edit,update and delete job postings.
-- Review AI-generated anonymized profiles for candidates with their match scores for a given role.
-- Unlock full candidate profiles by completing a payment.
-- Select a candidate for follow up.
-- Submit survey about a candidate and view survey results by candidates.
-- View Job Role and Employer specific aggregate metrics.
+- They can:
+  - Review AI-generated anonymized profiles for candidates with their match scores for a given role.
+  - Unlock full candidate profiles by completing a payment.
+  - Select a candidate for follow up.
+  - Submit survey about a candidate and view survey results by candidates.
+  - View Job Role and Employer specific aggregate metrics.
 
 ### Candidate User Journey
 - A Candidate registers themselves on the site.
