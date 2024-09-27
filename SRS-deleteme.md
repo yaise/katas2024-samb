@@ -70,9 +70,6 @@ ClearView aims to provide a more equitable hiring experience by leveraging AI to
 | DEI | Diversity, Equity, and Inclusion |
 | ATS | Applicant Tracking System |
 
-### 1.4 References
-- [Requirements](https://docs.google.com/document/d/1jCHMAvgzqaYaAp09br12OC4ozpVXZR3s9ezgEqncZ9U/edit#heading=h.xvbdsi1e8ttg)
-- [Presentation Slides](https://on24static.akamaized.net/event/46/37/41/6/rt/1/documents/resourceList1726751953205/todayskatasslides1726751953205.pdf)
 
 ## 2. Overall Description
 
@@ -197,51 +194,7 @@ ClearView will include a feedback survey system that collects structured feedbac
 - **Interviewer Survey**: A 5-question survey will be sent to interviewers to evaluate the candidate’s preparedness, qualifications, and potential fit for the role.
 - **Survey Customization**: Administrators should have the ability to modify survey questions based on company-specific feedback needs.
 
-## 4. External Interface Requirements
 
-### 4.1 User Interfaces
-
-#### 4.1.1 Employer Interface
-- **Dashboard**: Upon login, employers (hiring managers) are presented with a dashboard showing:
-    - Open job postings with key metrics such as the number of applicants, match scores, and stage of each candidate.
-    - Notifications of new applicants and candidates expressing interest anonymously.
-    - Data analytics visualizations (e.g., diversity metrics, performance against DEI goals).
-- **Job Posting Management**: Employers can:
-    - Create, edit, and delete job postings.
-    - View the anonymized profiles of job seekers with their match scores.
-    - Unlock full candidate profiles (upon reaching the necessary decision point).
-    - Review AI-generated summaries and feedback for each candidate.
-- **Survey Results**: Employers will have access to:
-    - Survey results submitted by interviewers and candidates.
-    - Aggregated feedback reports related to hiring decisions.
-- **Data Export**: Employers can export candidate profiles, match scores, and survey feedback into PDF or CSV formats for internal review.
-
-#### 4.1.2 Job Seeker Interface
-- **Profile Creation**: Job seekers can:
-    - Register for the platform by providing a resume, demographic details, and contact information.
-    - Upload or update resumes, which are processed by the AI to anonymize and structure the data into S.M.A.R.T goals.
-    - View and download AI-generated tips to improve their resumes.
-    - Mark themselves as inactive once hired (or for temporary removal from job search visibility).
-- **Job Search & Application**: Job seekers will:
-    - Search for open roles by keywords, locations, or match score.
-    - Express interest anonymously in positions without formally applying.
-    - Apply to job postings, at which point the hiring manager will see their anonymized profile.
-    - Track job applications and see which companies have expressed interest in their profiles.
-- **Notification System**: Job seekers will receive:
-    - Alerts on job matches with a high similarity score.
-    - Notifications when employers express interest or review their profiles.
-    - Status updates on the interview process or decision-making stages.
-
-#### 4.1.3 Administrator Interface
-- **User Management**: Admins can:
-    - Register new employers and manage job seeker accounts.
-    - Monitor job postings and hiring workflows across the platform.
-    - Mark candidates as hired and maintain internal references for all user data.
-- **Reporting & Analytics**: Admins will have access to:
-    - Generate and schedule out-of-the-box reports on KPIs such as job offer rates, diversity trends, and bias reduction metrics.
-    - Customize reports by selecting specific timeframes, job roles, and other parameters.
-    - Export aggregated reports in formats like CSV or PDF.
-    - View high-level platform health indicators (e.g., number of active employers, candidates, and roles).
 
 ### 4.2 Hardware Interfaces
 Since ClearView is a cloud-based application, there are no hardware interface requirements for users. However, users must have access to standard computing devices with internet connectivity, such as:
@@ -314,26 +267,39 @@ The platform should have an intuitive user interface for easy navigation by all 
 The platform should allow for future scalability and integration with additional HR systems as needed.
 
 ## 7. User Journeys
+### Hiring Manager User Journey
+- A Hiring Manager registers themselves on the site.
+- They register the employer on the platform. An AI can assist them with completing the profile of the employer.
+- They can manage job roles i.e. Create, edit, update and delete job roles.
+- Review AI-generated anonymized profiles for candidates with their match scores for a given role.
+- Unlock full candidate profiles by completing a payment.
+- Select a candidate for follow up.
+- Submit survey about a candidate and view survey results by candidates.
+- View Job Role and Employer specific aggregate metrics.
 
-### 7.1 Hiring Manager User Journey
-1. New Employer registers on the platform.
-2. AI autofills company data; the hiring manager completes data entry for non-public facing information.
-3. User view is a dashboard and workspace.
-4. Hiring Manager uploads open roles.
 
-### 7.2 Job Seeker User Journey
-1. Register for the site.
-2. Upload resume and demographic/contact information.
-3. View the number of interested hits.
-4. Contact employer anonymously through the app.
-5. Remove resume.
-6. Update resume.
-7. Mark as inactive (hired).
+### 7.2 Candidate User Journey
+- A Candidate registers themselves on the site. 
+- They manage their personal profile - demographic details/contact information and their resume. An AI assists with improving their resume. 
+- The Candidate them marks themselves as active and an AI converts the profile and resume into an anonymized profile in SMART format. 
+- View the roles that have expressed interest in them. 
+- Follow up with hiring Manager for the role (outside of the ClearView app)
+- Mark themselves as inactive if hired.
+- Submit a survey about the role and interviewer.
 
-### 7.3 Admin User Journey
-1. Mark candidate as hired.
-2. Maintain internal reference and user data.
-3. Generate reports and analytics.
+
+
+
+#### 4.1.3 Administrator Interface
+- **User Management**: Admins can:
+    - Register new employers and manage job seeker accounts.
+    - Monitor job postings and hiring workflows across the platform.
+    - Mark candidates as hired and maintain internal references for all user data.
+- **Reporting & Analytics**: Admins will have access to:
+    - Generate and schedule out-of-the-box reports on KPIs such as job offer rates, diversity trends, and bias reduction metrics.
+    - Customize reports by selecting specific timeframes, job roles, and other parameters.
+    - Export aggregated reports in formats like CSV or PDF.
+    - View high-level platform health indicators (e.g., number of active employers, candidates, and roles).
 
 ## 8. Technical Details
 - The solution will use a trained LLM for anonymized candidate profile construction and resume tip generation.
