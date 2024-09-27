@@ -70,6 +70,7 @@ The following is a list of distilled requirements
 - **REQ10**: Employers must be able to access analytic reports on hiring metrics, including diversity and DEI performance. .
 - **REQ11**: Administrators must be able to generate and schedule out-of-the-box reports on KPIs, such as hiring rates, diversity trends, and performance against DEI goals.
 - **REQ12**: Administrators must manage system configurations, such as user permissions, API integrations, and data retention policies.
+
 ### Architectural Characteristics
 ![architectural-context](./resources/arch-characteristics.png)
 TODO - Add a blurb of text as to why we chose this ? 
@@ -77,10 +78,25 @@ TODO - Add a blurb of text as to why we chose this ?
 ## TODO - Assumptions
 - The platform relies on the availability of APIs from HR systems for integration.
 - The Admin user is part of the Employer similar to a hiring manager. 
+- We assume that the Hiring manager is also the interviewer for the purposes of surveys. 
 
-## TODO - Solution
-TODO - Add Logical model diagram and explain
-TODO - Add Component diagram and explain
+## WIP - Solution
+### Logical Model
+Here is a logical model of the system that explores key entities(a logical entity and not necessarily one from database parlance) and their relationships to inform APIs and data models.
+**Note:** Some relationships adopt crow's foot notation just for clarity sakes.
+**Note:** Some elements in the diagram may just be key attributes of an entity. Example a profile is a key attribute of a Candidate.
+![katas2024 logical model.png](./resources/katas2024-logical-model.png)
+- The system has multiple user with different roles - Candidate, Hiring Manager, DEI consultant, System Admin. 
+- A user can optionally belong to an organization(employer). 
+    - A Hiring manager will belong to an organization(Employer). 
+    - A DEI consultant may belong to an organization.
+    - A Candidate and System Admin don't necessarily belong to an employer but may be part of an internal Organization(for ex. ClearWorks)
+- A Hiring Manger manages a job posting that is owned by an Employer
+- A Candidate is matched with a Job Posting. 
+- A Candidate, job posting and employer each have profiles. Profiles can be public or private(until made viewable)
+- A candidate owns the survey results posted by Hiring Managers.
+- A Hiring Manager owns the survey results posted by Candidates.
+- Metrics are collected pertaining to a particular job posting for ex. candidate acceptance/rejection, candidate unlocks.  
 
 ## Architectural Style
 
