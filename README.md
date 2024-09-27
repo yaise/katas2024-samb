@@ -91,8 +91,7 @@ The following is a list of distilled requirements
 We chose Accuracy, Interoperability and Reliability (Composite of availability, testability, data integrity, data consistency, fault tolerance) as the driving architectural characteristics.
 - Reliability - Any cloud based software system must be available even when faults occur. Data integrity and consistency is key for any system that remembers/stores data. Testability is important for high quality and frequent software delivery.  
 - Accuracy - LLM models can hallucinate (i.e. give incorrect answers). It is important for the LLM to NOT omit key pieces of information when creating the SMART summaries. Additionally, it MUST remove bias factors from the anonymized candidate profiles.  
-- Interoperability - Given that this is a supplemental HR system, we want the components to be API driven so that connectivity and data transfer can be achieved in a standardized way with external HR systems. Additionally, intra system communication   
-
+- Interoperability - Given that this is a supplemental HR system, we want the components to be API driven so that connectivity and data transfer can be achieved in a standardized way with external HR systems. Additionally, intra system communication.
 
 ## TODO - Assumptions
 - The platform relies on the availability of APIs from HR systems for integration.
