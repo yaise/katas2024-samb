@@ -11,24 +11,46 @@ Diversity Cyber council wants to build ClearView, a HR platform that performs bi
 | ATS | Applicant Tracking System |
 
 ## System Context
-TODO - Add context Diagram here
+```mermaid
+ C4Context
+    title System Context Diagram for ClearView
+    
+    %% People interacting with the system
+    Person(HM, "Hiring Manager", "Users responsible for managing Job postings")
+    Person(C, "Candidate", "Users applying for Job postings")
+    Person(Admin, "Administrator", "Users responsible for managing the platform")
+
+    %% The main system
+    System(ClearView, "ClearView", "Anonymizes candidate profiles to and matches with job postings to reduce bias.")
+    
+    %% External system
+    System_Ext(primaryHR, "External HR System", "External HR system")
+    System_Ext(LLM, "External LLM Provider", "External LLM provider")
+    
+    %% Relationships between people and the system
+    Rel(HM, ClearView, "Manage job postings")
+    Rel(C, ClearView, "Manage profile and apply for postings")
+    Rel(Admin, ClearView, "Manage the ClearView platform")
+    Rel(ClearView, primaryHR, "Integrate with")
+    Rel(ClearView, LLM, "Use LLM provider")
+```
 
 The system aims to serve the following user Journeys
 ### Hiring Manager User Journey
 - A Hiring Manager registers themselves on the site.
 - They register the employer on the platform. An AI can assist them with completing the profile of the employer.
-- They can manage job roles i.e. Create, edit,update and delete job roles.
+- They can manage job postings i.e. Create, edit,update and delete job postings.
 - Review AI-generated anonymized profiles for candidates with their match scores for a given role.
 - Unlock full candidate profiles by completing a payment.
 - Select a candidate for follow up.
 - Submit survey about a candidate and view survey results by candidates.
 - View Job Role and Employer specific aggregate metrics.
 
-### 7.2 Candidate User Journey
+### Candidate User Journey
 - A Candidate registers themselves on the site.
 - They manage their personal profile - demographic details/contact information and their resume. An AI assists with improving their resume.
 - The Candidate them marks themselves as active and an AI converts the profile and resume into an anonymized profile in SMART format.
-- View the roles that have expressed interest in them.
+- View the posting that have expressed interest in them.
 - Follow up with hiring Manager for the role (outside the ClearView app)
 - Mark themselves as inactive if hired.
 - Submit a survey about the role and interviewer.

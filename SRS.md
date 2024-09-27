@@ -293,8 +293,6 @@ The platform should allow for future scalability and integration with additional
 2. Maintain internal reference and user data.
 3. Generate reports and analytics.
 
-
-
 #### 4.1.3 Administrator Interface
 - **User Management**: Admins can:
     - Register new employers and manage job seeker accounts.
