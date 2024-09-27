@@ -288,10 +288,7 @@ The platform should allow for future scalability and integration with additional
 - Submit a survey about the role and interviewer.
 
 
-### 7.3 Admin User Journey
-1. An Admin belongs to the employer. 
-2. Maintain internal reference and user data.
-3. Generate reports and analytics.
+
 
 #### 4.1.3 Administrator Interface
 - **User Management**: Admins can:
