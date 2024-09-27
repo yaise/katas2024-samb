@@ -51,7 +51,7 @@ The system aims to serve the following user journeys:
 ### Candidate User Journey
 - A Candidate registers themselves on the site.
 - They manage their personal profile - demographic details/contact information and their resume. An AI assists with improving their resume.
-- The Candidate them marks themselves as active and an AI converts the profile and resume into an anonymized profile in SMART format.
+- The Candidate then marks themselves as active and an AI converts the profile and resume into an anonymized profile in SMART format.
 - View the posting that have expressed interest in them.
 - Follow up with hiring Manager for the role (outside the ClearView app)
 - Mark themselves as inactive if hired.
