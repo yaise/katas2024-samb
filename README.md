@@ -35,7 +35,8 @@ Diversity Cyber council wants to build ClearView, a HR platform that performs bi
     Rel(ClearView, LLM, "Use LLM provider")
 ```
 
-The system aims to serve the following user Journeys
+The system aims to serve the following user journeys:
+
 ### Hiring Manager User Journey
 - A Hiring Manager registers themselves on the site.
 - They register the employer on the platform. An AI can assist them with completing the profile of the employer.
