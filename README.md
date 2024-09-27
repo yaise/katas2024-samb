@@ -58,7 +58,7 @@ The system aims to serve the following user journeys:
   - Mark themselves as inactive if hired.
   - Submit a survey about the role and interviewer.
 
-## TODO - Requirements
+## Requirements
 ### Functional 
 The following is a list of distilled requirements
 - **REQ1**: Candidate must be able to create a profile by providing demographic, contact, and resume information.
@@ -69,37 +69,50 @@ The following is a list of distilled requirements
 - **REQ6**: Employers can post job descriptions, edit, and delete open roles in the system.
 - **REQ7**: Employers must be able to view anonymized candidate profiles with AI-generated summaries (SMART format) and match scores.
 - **REQ8**: Employers must be able to pay to unlock full candidate profiles (with demographic and PII data).
-- **REQ9**: Employers can request survey feedback from job seekers after interviews.
+- **REQ9**: Employers can request survey feedback from candidates after interviews.
 - **REQ10**: Employers must be able to access analytic reports on hiring metrics, including diversity and DEI performance. .
 - **REQ11**: Administrators must be able to generate and schedule out-of-the-box reports on KPIs, such as hiring rates, diversity trends, and performance against DEI goals.
 - **REQ12**: Administrators must manage system configurations, such as user permissions, API integrations, and data retention policies.
 
 ### Architectural Characteristics
 ![architectural-context](./resources/arch-characteristics.png)
-TODO - Add a blurb of text as to why we chose this ? 
+We chose Accuracy, Interoperability and Reliability (Composite of availability, testability, data integrity, data consistency, fault tolerance) as the driving architectural characteristics.
+- Reliability - Any cloud based software system must be available even when faults occur. Data integrity and consistency is key for any system that remembers/stores data. Testability is important for high quality and frequent software delivery.  
+- Accuracy - LLM models can hallucinate (i.e. give incorrect answers). It is important for the LLM to NOT omit key pieces of information when creating the SMART summaries. Additionally, it MUST remove bias factors from the anonymized candidate profiles.  
+- Interoperability - Given that this is a supplemental HR system, we want the components to be API driven so that connectivity and data transfer can be achieved in a standardized way with external HR systems. Additionally, intra system communication   
+
 
 ## TODO - Assumptions
 - The platform relies on the availability of APIs from HR systems for integration.
 - The Admin user is part of the Employer similar to a hiring manager. 
-- We assume that the Hiring manager is also the interviewer for the purposes of surveys. 
+- The Hiring manager is also the interviewer for the purposes of surveys.
+- The system caters to the US market and runs in a hosted cloud provider like AWS.
 
 ## WIP - Solution
 ### Logical Model
-Here is a logical model of the system that explores key entities (a logical entity and not necessarily one from database parlance) and their relationships to inform APIs and data models.
+Here is a logical model of the system that explores key entities (a logical entity and not necessarily one from database parlance) and their relationships that need to be remembered to inform APIs and data models.
+
 **Note:** Some relationships adopt crow's foot notation just for clarity's sake.
+
 **Note:** Some elements in the diagram may just be key attributes of an entity. Example: a profile is a key attribute of a Candidate.
+
+**Note:** Not all relationships need to be remembered by the system.
+
 ![katas2024 logical model.png](./resources/katas2024-logical-model.png)
-- The system has multiple user with different roles - Candidate, Hiring Manager, DEI consultant, System Admin. 
-- A user can optionally belong to an organization(employer). 
-    - A Hiring manager will belong to an organization(Employer). 
-    - A DEI consultant may belong to an organization.
+
+- The system has multiple users with different roles - Candidate, Hiring Manager, DEI consultant, System Admin. 
+- A user can optionally belong to an Organization. 
+    - A Hiring manager will belong to an Organization(Employer). 
+    - A DEI consultant may belong to an Organization.
     - A Candidate and System Admin don't necessarily belong to an employer but may be part of an internal Organization(for ex. ClearView)
 - A Hiring Manger manages a job posting that is owned by an Employer
 - A Candidate is matched with a Job Posting. 
 - A Candidate, job posting and employer each have profiles. Profiles can be private ( but viewable to a Hiring Manager post payments ) or public(anonymized view of the private profile)
 - A candidate owns the survey results posted by Hiring Managers.
 - A Hiring Manager owns the survey results posted by Candidates.
-- Metrics are collected pertaining to a particular job posting for ex. candidate acceptance/rejection, candidate unlocks.  
+- Metrics are collected pertaining to a particular job posting for ex. candidate acceptance/rejection, candidate unlocks. 
+- Observability signals are collected for System maintainability.
+- LLM Metrics are collected to ensure the Accuracy of the external LLM system.
 
 ## Architectural Style
 TODO: Reference https://www.developertoarchitect.com/downloads/architecture-styles-worksheet.pdf and our priorities and state where we landed
