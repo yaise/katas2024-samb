@@ -65,7 +65,7 @@ The following is a list of distilled requirements
 - **REQ4**: Candidate must be able to mark themselves as inactive when hired.
 - **REQ5**: Employers must be able to create a company profile through AI-assisted autofill.
 - **REQ6**: Employers can post job descriptions, edit, and delete open roles in the system.
-- **REQ7**: Employers must be able to view anonymized candidate profiles with AI-generated summaries(SMART format) and match scores.
+- **REQ7**: Employers must be able to view anonymized candidate profiles with AI-generated summaries (SMART format) and match scores.
 - **REQ8**: Employers must be able to pay to unlock full candidate profiles (with demographic and PII data).
 - **REQ9**: Employers can request survey feedback from job seekers after interviews.
 - **REQ10**: Employers must be able to access analytic reports on hiring metrics, including diversity and DEI performance. .
