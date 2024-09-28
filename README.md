@@ -186,7 +186,7 @@ Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be
 <span style="color:red">_TODO: Add details about web application here_</span>
 
 Related ADRs:
-* [ADR: Web application stack](ADRs/ADR-Web-Application-Stack.md)
+* [Next.js and React for Web Application Stack](ADRs/ADR-04-Web-Application-Stack.md)
 
 ## Architectural Style
 TODO: Reference https://www.developertoarchitect.com/downloads/architecture-styles-worksheet.pdf and our priorities and state where we landed

@@ -1,4 +1,4 @@
-# ADR: Web Application Stack
+# Next.js and React for Web Application Stack
 
 ## Status
 

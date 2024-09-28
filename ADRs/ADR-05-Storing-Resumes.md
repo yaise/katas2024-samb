@@ -1,4 +1,4 @@
-# ADR: Storing uploaded resumes in file store
+# Storing uploaded resumes in file store
 
 ## Status
 
