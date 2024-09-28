@@ -129,6 +129,28 @@ Here is a logical model of the system that explores key entities (a logical enti
 ## Component Diagram
 ![C2 component diagram](resources/katas2024-c2-components.png)
 
+### C3 - Matcher Component Diagram
+Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be further broken down into below components:
+![matcher-c3-diagram.png](./resources/matcher-c3-diagram.png)
+- **Feed Controller** - exposes internal APIs that can be used to query feed(i.e. matching candidates). 
+- **Job Ingestion Controller** - exposes internal APIs that can be used ingest jobs that are ready to be matched. 
+- **Resume Ingestion Controller** - exposes internal APIs that can be used to ingest "Smart Resumes" that are ready to be matched. 
+- **Embedding Service** - abstracts away complexity of choosing the right model and algorithm that is needed for 
+      embedding generation for the given use case.
+- **Matching Service** - Responsible to generate feed by performing vector based matching by using capabilities provided 
+   by persistence layer.
+- **Embedding Processor** - Queries generated embeddings from external llm provider via llm gateway after a delay 
+   and stores them in vector db when embeddings are available.  
+- **Persistence Layer** - Provide abstraction over specific vector db provider/implementation.
+  - **Message Queue API** - Provides abstraction over specific message queue implementation/choice.
+    - Provides API to publish a message(optionally with a delay)
+    - Register a message type
+    - Provides API to define **Runnables** that should be executed when the message is delivered. 
+
+#### Associated ADRs
+- [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-02-Use-of-message-queues-for-asynchrounous-execution.md)
+- [Use Pinecone as a Vector Database](./ADRs/ADR-03-Use-of-Pinecone-as-vector-db.md)
+
 ### Component: Web Application
 
 ```mermaid
@@ -168,7 +190,6 @@ Related ADRs:
 
 ## Architectural Style
 TODO: Reference https://www.developertoarchitect.com/downloads/architecture-styles-worksheet.pdf and our priorities and state where we landed
-
 ## References
 - [Requirements](https://docs.google.com/document/d/1jCHMAvgzqaYaAp09br12OC4ozpVXZR3s9ezgEqncZ9U/edit#heading=h.xvbdsi1e8ttg)
 - [Presentation Slides](https://on24static.akamaized.net/event/46/37/41/6/rt/1/documents/resourceList1726751953205/todayskatasslides1726751953205.pdf)
