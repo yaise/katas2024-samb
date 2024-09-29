@@ -7,14 +7,14 @@ Diversity Cyber Council (https://www.diversitycybercouncil.com/) is a 501c3 Non-
 Diversity Cyber council wants to build ClearView, a HR platform that performs bias-free matching of candidate resumes with potential Employers. Additionally, it will have capabilities for data/metrics collection, aggregation and reporting. It will also integrate with external HR systems.
 
 ## Definitions, Acronyms, and Abbreviations
-
-| Term | Definition                       |
-| ---- | -------------------------------- |
-| DEI  | Diversity, Equity, and Inclusion |
-| ATS  | Applicant Tracking System        |
-| LLM  | Large Language Model             |
-| HR   | Human Resource                   |
-| KPI  | Key Performance Indicator        |
+| Term | Definition                        |
+|------|-----------------------------------|
+| DEI  | Diversity, Equity, and Inclusion  |
+| ATS  | Applicant Tracking System         |
+| LLM  | Large Language Model              |
+| HR   | Human Resource                    |
+| KPI  | Key Performance Indicator         |
+| CNCF | Cloud Native Computing Foundation |
 
 ## System Context
 
@@ -214,9 +214,63 @@ Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be
 _TODO: add diagram_
 
 ### Metrics
-#### C3: Metrics Database (TODO)
+We need to collect metrics based on certain events within the system to be able to generate aggregate dashboards for the Candidates, and Employers, and ClearView Admins.
 
+The key events and their respective attributes are as follows
+- Unlock Candidate (Hiring manger making a payment ot unlock a candidate)
+  - ```timestamp```
+  - ```candidateId```
+  - ```hiringManagerId```
+  - ```jobPostingId```
+  - ```employerId```
+- Select Candidate (Hiring manager selecting a candidate for pursuing)
+  - ```timestamp```
+  - ```candidateId```
+  - ```hiringManagerId```
+  - ```jobPostingId```
+  - ```employerId```
+- Confirm Candidate (Hiring manager confirming a candidate as hired)
+  - ```timestamp```
+  - ```candidateId```
+  - ```hiringManagerId```
+  - ```jobPostingId```
+  - ```employerId```
+  - ```<demographic attirbutes>(see below)```
+- Reject Candidate (Hiring manager rejecting a candidate)
+  - ```timestamp```
+  - ```candidateId```
+  - ```hiringManagerId```
+  - ```jobPostingId```
+  - ```employerId```
+  - ```<demographic attirbutes>(see below)```
+
+Key Demographic attributes
+- ```Gender``` -  Male, female, non-binary.
+- ```Education Level``` - High school, bachelor's degree, master's degree, etc.
+- ```Occupation``` - Job titles, industries, or employment status.
+- ```Geographic Location``` - Country, state, city, or specific regions.
+- ```Ethnicity/Race``` - Various ethnic or racial backgrounds.
+- ```Language``` - Primary language spoken.
+
+
+The key thing to note in all the above metrics is that they're all captured when a Candidate's status changes(i.e. unlock , select , confirm, or reject candidate) and these all happen when an Employer(Hiring manger/Admin) use the web application ( aka api calls as part of the system).
+
+The write patterns are a function of the frequency at which hiring managers evaluate candidates for positions and the time involved in completing the interview process( not in scope of ClearView). The write patterns will likely not be very frequent.
+
+The read patterns are again a function of Employer Admins reviewing these metrics. We assume that this is also not super frequent. There is however a regular cadence of the monthly report generation.
+
+#### C3: Metrics Database (TODO)
 _TODO: add diagram_
+
+### Observability and Application Performance Management
+Internal Observability signals like logs, traces, metrics are critical for ensuring reliability and availability of the service.
+Additionally, we need a reliable way to store, visualize, and alert on these metrics. The following pieces of technology provide a comprehensive observability stack.
+
+Open Telemetry - [ADR-OpenTelemetry-for-observability](./ADRs/ADR-04-OpenTelemetry-for-observability.md) - Open Telemetry a CNCF project and pretty much the de-facto standard for collecting and transporting observability signals from the infrastructure layer all the way up to the application layer.
+
+Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-05-Elastic-for-observability.md)Elastic provides comprehensive set of tools for storing, searching and visualizing observability signals. It is compatible with Open Telemetry. 
+
+PagerDuty - PagerDuty is pretty much the de-facto standard for building an alert based notification system for ensuring timely and proactive responses to operational issues.
 
 ## Architectural Style
 
