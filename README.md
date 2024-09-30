@@ -178,7 +178,7 @@ Aspects of this application:
 
 ##### Related ADRs:
 
-- [Next.js and React for Web Application Stack](ADRs/ADR-Web-Application-Stack)
+- [Next.js and React for Web Application Stack](ADRs/ADR-Web-Application-Stack.pdf)
 
 #### C3: Relational Database
 
