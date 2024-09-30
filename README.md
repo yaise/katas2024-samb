@@ -18,7 +18,7 @@ Diversity Cyber council wants to build ClearView, a HR platform that performs bi
 
 ## System Context
 
-We will use C4 for most of the diagamrs to describe the system. ![ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format)
+We will use C4 for most of the diagrams to describe the system. ![ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format)
 TODO: move diagram to Lucid
 
 ```mermaid
@@ -118,9 +118,9 @@ We chose Accuracy, Interoperability and Reliability (Composite of availability, 
 
 ## Solution
 
-_TODO: summary_
+We propose a comprehensive design for the ClearView system that meets all specified requirements. The solution involves building a web application that manages the presentation, business logic, and data persistence layers. Key features, such as AI, storage, billing, and identity verification, will be outsourced to reliable, best-in-class external services, allowing us to focus on developing core ClearView functionalities in-house. The system will leverage modern, scalable technologies, including Next.js for frontend and backend development and cloud-based services for hosting and data management. Integration with popular HR platforms will be facilitated via standard REST APIs, ensuring seamless interoperability and future scalability.
 
-_Our solution is to implement a ..._
+
 
 ### Logical Model
 
@@ -153,7 +153,18 @@ Here is a logical model of the system that explores key entities (a logical enti
 
 ![C2 container diagram](resources/c2-container.png)
 
-_TODO: describe the blocks_
+- **Job Candidate, Hiring Manager, ClearView Admin** - these are the supported user personas who can use ClearView. Each persona once registered has a user profile.
+- **Single-Page Application** - a React (Javascript) app which serves a front end interface to ClearView users
+- **Web Application** - a single Next.js (Node.js) app that encapsulates the static content, server side processing and the backend for the front end API calls. Most business logic is contained in this component - managing resumes, jobs, users, matches & more
+- **LLM Gateway** - an standard interface to an LLM AI provider (allowing the easy change of model or provider)
+- **LLM Provider** - an external or internal AI large language model service
+- **HR Systems** - Hiring companies HR systems like Workday, where matched resumes can be uploaded to
+- **Message Queue** - a publish / subscriber component that allows for asynchronous processing
+- **(Relational) Database** - an ACID-complaint data store for user profiles, resumes, organizations and surveys
+- **Matcher, Database** - a search and match engine that matches anonymized resumes to job descriptions; uses a vector database to help with similarity matches
+- **File Store** - a file or binary large object store for PDF files and other non-relational data
+- **Metrics Processor, Database** - a component that manages metrics and reports; uses a time series database for efficient processing, querying and aggregation
+- **Billing, Billing and Payment Processor** - components that handle paying to unlock resumes; billing provider is from an external vendor
 
 ### Application
 
