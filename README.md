@@ -95,9 +95,9 @@ We chose Accuracy, Interoperability and Reliability (Composite of availability, 
 
 ## Solution
 
-_TODO: summary_
+We propose a comprehensive design for the ClearView system that meets all specified requirements. The solution involves building a web application that manages the presentation, business logic, and data persistence layers. Key features, such as AI, storage, billing, and identity verification, will be outsourced to reliable, best-in-class external services, allowing us to focus on developing core ClearView functionalities in-house. The system will leverage modern, scalable technologies, including Next.js for frontend and backend development and cloud-based services for hosting and data management. Integration with popular HR platforms will be facilitated via standard REST APIs, ensuring seamless interoperability and future scalability.
 
-_Our solution is to implement a ..._
+
 
 ### Logical Model
 
@@ -130,7 +130,29 @@ Here is a logical model of the system that explores key entities (a logical enti
 
 ![C2 container diagram](resources/c2-container.png)
 
-_TODO: describe the blocks_
+- **User Personas: Job Candidate, Hiring Manager, ClearView Admin** – These are the primary user roles in ClearView, each with a unique profile upon registration.
+
+- **Single-Page Application (SPA)** – A React-based JavaScript app that delivers a seamless front-end experience for ClearView users, providing fast and responsive interactions.
+
+- **Web Application** – A Next.js (Node.js) application that handles static content, server-side processing, and acts as the backend for API requests. It encapsulates most of the business logic, managing resumes, jobs, user accounts, matches, and more.
+
+- **LLM Gateway** – A standard interface for connecting to external AI providers, allowing for flexibility in changing or upgrading AI models and services.
+
+- **LLM Provider** – An external or internal large language model (AI) service used for tasks like resume analysis, matching, and recommendation generation.
+
+- **HR Systems Integration** – Interfaces with external HR systems like Workday to upload matched resumes for hiring companies.
+
+- **Message Queue** – A publish/subscribe mechanism that enables asynchronous task processing for scalability and system efficiency.
+
+- **Relational Database** – An ACID-compliant data store that houses core data, including user profiles, resumes, organizations, and survey results.
+
+- **Matcher Engine** – A search and matching engine that compares anonymized resumes to job descriptions using a vector database for efficient similarity scoring.
+
+- **File Store** – A repository for storing non-relational data like PDF resumes and other file-based content, supporting large binary objects (BLOBs).
+
+- **Metrics Processor** – Manages system metrics, reports, and performance data, leveraging a time-series database for optimized processing, querying, and aggregation of historical data.
+
+- **Billing System** – Handles payment workflows for unlocking resumes, with billing and payment processing services provided by an external vendor.
 
 ### Application
 
