@@ -99,7 +99,7 @@ We chose Accuracy, Interoperability and Reliability (Composite of availability, 
 - The Hiring manager is also the interviewer for the purposes of surveys.
 - The System caters to the US market and runs in a hosted cloud provider like AWS.
 
-## WIP - Solution
+## Solution
 ### Logical Model
 Here is a logical model of the system that explores key entities (a logical entity and not necessarily one from database parlance) and their relationships that need to be remembered to inform APIs and data models.
 
@@ -126,7 +126,7 @@ Here is a logical model of the system that explores key entities (a logical enti
 - Observability signals are collected for System maintainability.
 - LLM Metrics are collected to ensure the Accuracy of the external LLM system.
 
-## Component Diagram
+### Component Diagram
 ![C2 component diagram](resources/katas2024-c2-components.png)
 
 ### C3 - Matcher Component Diagram
