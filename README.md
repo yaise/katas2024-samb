@@ -153,18 +153,29 @@ Here is a logical model of the system that explores key entities (a logical enti
 
 ![C2 container diagram](resources/c2-container.png)
 
-- **Job Candidate, Hiring Manager, ClearView Admin** - these are the supported user personas who can use ClearView. Each persona once registered has a user profile.
-- **Single-Page Application** - a React (Javascript) app which serves a front end interface to ClearView users
-- **Web Application** - a single Next.js (Node.js) app that encapsulates the static content, server side processing and the backend for the front end API calls. Most business logic is contained in this component - managing resumes, jobs, users, matches & more
-- **LLM Gateway** - an standard interface to an LLM AI provider (allowing the easy change of model or provider)
-- **LLM Provider** - an external or internal AI large language model service
-- **HR Systems** - Hiring companies HR systems like Workday, where matched resumes can be uploaded to
-- **Message Queue** - a publish / subscriber component that allows for asynchronous processing
-- **(Relational) Database** - an ACID-complaint data store for user profiles, resumes, organizations and surveys
-- **Matcher, Database** - a search and match engine that matches anonymized resumes to job descriptions; uses a vector database to help with similarity matches
-- **File Store** - a file or binary large object store for PDF files and other non-relational data
-- **Metrics Processor, Database** - a component that manages metrics and reports; uses a time series database for efficient processing, querying and aggregation
-- **Billing, Billing and Payment Processor** - components that handle paying to unlock resumes; billing provider is from an external vendor
+- **User Personas: Job Candidate, Hiring Manager, ClearView Admin** – These are the primary user roles in ClearView, each with a unique profile upon registration.
+
+- **Single-Page Application (SPA)** – A React-based JavaScript app that delivers a seamless front-end experience for ClearView users, providing fast and responsive interactions.
+
+- **Web Application** – A Next.js (Node.js) application that handles static content, server-side processing, and acts as the backend for API requests. It encapsulates most of the business logic, managing resumes, jobs, user accounts, matches, and more.
+
+- **LLM Gateway** – A standard interface for connecting to external AI providers, allowing for flexibility in changing or upgrading AI models and services.
+
+- **LLM Provider** – An external or internal large language model (AI) service used for tasks like resume analysis, matching, and recommendation generation.
+
+- **HR Systems Integration** – Interfaces with external HR systems like Workday to upload matched resumes for hiring companies.
+
+- **Message Queue** – A publish/subscribe mechanism that enables asynchronous task processing for scalability and system efficiency.
+
+- **Relational Database** – An ACID-compliant data store that houses core data, including user profiles, resumes, organizations, and survey results.
+
+- **Matcher Engine** – A search and matching engine that compares anonymized resumes to job descriptions using a vector database for efficient similarity scoring.
+
+- **File Store** – A repository for storing non-relational data like PDF resumes and other file-based content, supporting large binary objects (BLOBs).
+
+- **Metrics Processor** – Manages system metrics, reports, and performance data, leveraging a time-series database for optimized processing, querying, and aggregation of historical data.
+
+- **Billing System** – Handles payment workflows for unlocking resumes, with billing and payment processing services provided by an external vendor.
 
 ### Application
 
