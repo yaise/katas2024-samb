@@ -18,7 +18,7 @@ Diversity Cyber council wants to build ClearView, a HR platform that performs bi
 
 ## System Context
 
-We will use C4 for most of the diagamrs to describe the system. ![ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format.md)
+We will use C4 for most of the diagamrs to describe the system. [ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format.md)
 
 ![System context](resources/c1.png)
 
