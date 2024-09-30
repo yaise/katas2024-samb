@@ -154,7 +154,9 @@ Here is a logical model of the system that explores key entities (a logical enti
 
 _TODO: describe the blocks_
 
-### C3: Web Application
+### Application
+
+#### C3: Web Application
 
 The C3 component diagram for the Next.js web application is as follows:
 
@@ -173,15 +175,16 @@ Aspects of this application:
 - **Persistence layer** - abstracts persistence to database/file store.
 - **Metrics layer** - abstracts persistence and querying of metrics.
 
-Related ADRs:
+##### Related ADRs:
 
 - [Next.js and React for Web Application Stack](ADRs/ADR-04-Web-Application-Stack.md)
 
-### C3: Relational Database
+#### C3: Relational Database
 
 ![ER diagram](resources/ERD.png)
-
-### C3: Matcher Component Diagram
+ 
+### Matcher
+#### C3: Matcher Component
 
 Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be further broken down into below components:
 ![matcher-c3-diagram.png](./resources/matcher-c3-diagram.png)
@@ -201,12 +204,17 @@ Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be
     - Register a message type
     - Provides API to define **Runnables** that should be executed when the message is delivered.
 
-#### Associated ADRs
+##### Associated ADRs
 
 - [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-02-Use-of-message-queues-for-asynchrounous-execution.md)
 - [Use Pinecone as a Vector Database](./ADRs/ADR-03-Use-of-Pinecone-as-vector-db.md)
 
-### C3: Vector Database (TODO)
+#### C3: Vector Database (TODO)
+
+_TODO: add diagram_
+
+### Metrics
+#### C3: Metrics Database (TODO)
 
 _TODO: add diagram_
 
