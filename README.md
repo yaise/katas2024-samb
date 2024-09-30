@@ -159,7 +159,7 @@ The C3 component diagram for the Next.js web application is as follows:
 
 Aspects of this application:
 - **Next.js router** - this is the server-side routing of requests into the Node.js server. Next.js has file-based routing that will be used.
-- **Routes**
+- **Routes** - routes contain the UI components and business logic for the particular route.
   - **Resumes route** - this handles all requests related to resumes: uploading, managing, viewing as well as summarizing and viewing suggestions.
   - **Sign in route** - handles the authentication-specific requests for establishing user sessions. This also handles password resets and other user registration issues.
   - **Metrics route** - handles viewing and analyzing various metrics about ClearView.

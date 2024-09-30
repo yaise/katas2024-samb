@@ -15,21 +15,23 @@ Aspects to consider:
 3. Flexibility on hosting
 4. Supports component libraries for reuse
 5. UI Components requirements
-    1. Component reuse by component libraries
-    2. Accessible by default
+   1. Component reuse by component libraries
+   2. Accessible by default
+6. Various teams could eventually own parts of the UI
 
 ## Decision
 
 We will use the following:
 
-* Next.js
-  * Supports server side rendering for a responsive UI
-  * Supports front end frameworks like React
-* React
-  * Most-used front end framework
-  * Broadly supported
-* TBD: Component library
+- Next.js
+  - Supports server side rendering for a responsive UI
+  - Supports front end frameworks like React
+  - Ease of having path routes - this makes it easier to segregate UIs that different teams might eventually own.
+- React
+  - Most-used front end framework
+  - Broadly supported
+- TBD: Component library
 
 ## Consequences
 
-We will need a Node.js backend server to host this on.
+We will need a Node.js backend server to host this on. This also means that our business logic will initially exist within the Next.js app but can easily be moved out to other microservices later.
