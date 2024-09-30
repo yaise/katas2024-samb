@@ -217,48 +217,67 @@ _TODO: add diagram_
 We need to collect metrics based on certain events within the system to be able to generate aggregate dashboards for the Candidates, and Employers, and ClearView Admins.
 
 The key events and their respective attributes are as follows
-- Unlock Candidate (Hiring manger making a payment ot unlock a candidate)
-  - ```timestamp```
-  - ```candidateId```
-  - ```hiringManagerId```
-  - ```jobPostingId```
-  - ```employerId```
+- Unlock Candidate (Hiring manger making a payment ot unlock a candidate) 
+    - ```timestamp``` 
+    - ```candidateId```
+    - ```candidateName```
+    - ```hiringManagerId```
+    - ```hiringManagerName```
+    - ```jobPostingId```
+    - ```jobTitle```
+    - ```employerId```
+    - ```employerName```
 - Select Candidate (Hiring manager selecting a candidate for pursuing)
-  - ```timestamp```
-  - ```candidateId```
-  - ```hiringManagerId```
-  - ```jobPostingId```
-  - ```employerId```
+    - ```timestamp```
+    - ```candidateId```
+    - ```candidateName```
+    - ```hiringManagerId```
+    - ```hiringManagerName```
+    - ```jobPostingId```
+    - ```jobTitle```
+    - ```employerId```
+    - ```employerName```
 - Confirm Candidate (Hiring manager confirming a candidate as hired)
-  - ```timestamp```
-  - ```candidateId```
-  - ```hiringManagerId```
-  - ```jobPostingId```
-  - ```employerId```
-  - ```<demographic attirbutes>(see below)```
+    - ```timestamp```
+    - ```candidateId```
+    - ```candidateName```
+    - ```hiringManagerId```
+    - ```hiringManagerName```
+    - ```jobPostingId```
+    - ```jobTitle```
+    - ```employerId```
+    - ```employerName```
+    - ```<demographic attirbutes>(see below)```
 - Reject Candidate (Hiring manager rejecting a candidate)
-  - ```timestamp```
-  - ```candidateId```
-  - ```hiringManagerId```
-  - ```jobPostingId```
-  - ```employerId```
-  - ```<demographic attirbutes>(see below)```
+    - ```timestamp```
+    - ```candidateId```
+    - ```candidateName```
+    - ```hiringManagerId```
+    - ```hiringManagerName```
+    - ```jobPostingId```
+    - ```jobTitle```
+    - ```employerId```
+    - ```employerName```
+    - ```<demographic attirbutes>(see below)```
 
 Key Demographic attributes
-- ```Gender``` -  Male, female, non-binary.
-- ```Education Level``` - High school, bachelor's degree, master's degree, etc.
-- ```Occupation``` - Job titles, industries, or employment status.
-- ```Geographic Location``` - Country, state, city, or specific regions.
-- ```Ethnicity/Race``` - Various ethnic or racial backgrounds.
-- ```Language``` - Primary language spoken.
-
+- ```candidateGender``` -  Male, female, non-binary.
+- ```candidateEdLevel``` - High school, bachelor's degree, master's degree, etc.
+- ```candidateOccupation``` - Job titles, industries, or employment status.
+- ```candidateLocation``` - Country, state, city, or specific regions.
+- ```candidateRace``` - Various ethnic or racial backgrounds.
+- ```candidateLanguage``` - Primary language spoken.
 
 The key thing to note in all the above metrics is that they're all captured when a Candidate's status changes(i.e. unlock , select , confirm, or reject candidate) and these all happen when an Employer(Hiring manger/Admin) use the web application ( aka api calls as part of the system).
 
-The write patterns are a function of the frequency at which hiring managers evaluate candidates for positions and the time involved in completing the interview process( not in scope of ClearView). The write patterns will likely not be very frequent.
+The write patterns are a function of the frequency at which hiring managers evaluate candidates for positions and the time involved in completing the interview process (not in scope of ClearView). The write patterns will likely not be very frequent.
 
 The read patterns are again a function of Employer Admins reviewing these metrics. We assume that this is also not super frequent. There is however a regular cadence of the monthly report generation.
-
+#### C3 : Metrics Processor Component
+![C3 Metrics Component](resources/c3-metrics-processor.png)
+It would be web applications responsibility to enqueue events whenever a candidate's state changes. We re-use the message queue for the sake of simplicity(order of the events does not matter).
+The Message Processor would be responsible for draining these metrics from the queue and persisting them in a time series db.
+The Reports Processor is a component that generates that queries the time series db and generates reports at a system configured frequency and stores them in the file store. It also serves the reports to the web application whenever there are api calls.   
 #### C3: Metrics Database (TODO)
 _TODO: add diagram_
 
