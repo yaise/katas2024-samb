@@ -252,14 +252,21 @@ The key thing to note in all the above metrics is that they're all captured when
 The write patterns are a function of the frequency at which hiring managers evaluate candidates for positions and the time involved in completing the interview process (not in scope of ClearView). The write patterns will likely not be very frequent.
 
 The read patterns are again a function of Employer Admins reviewing these metrics. We assume that this is also not super frequent. There is however a regular cadence of the monthly report generation.
+
 #### C3 : Metrics Processor Component
 The C3 component diagram for the metrics component is as follows:
 ![C3 Metrics Component](resources/c3-metrics-processor.png)
 It would be web applications responsibility to enqueue events whenever a candidate's state changes. We re-use the message queue for the sake of simplicity(order of the events does not matter).
-The Message Processor would be responsible for draining these metrics from the queue and persisting them in a time series db.
-The Reports Processor is a component that generates that queries the time series db and generates reports at a system configured frequency and stores them in the file store. It also serves the reports to the web application whenever there are api calls.   
-#### C3: Metrics Database (TODO)
-_TODO: add diagram_
+
+- The Message Processor would be responsible for draining these metrics from the queue and persisting them in a time series db.
+- The Reports Processor is a component that generates that queries the time series db and generates reports at a system configured frequency and stores them in the file store. It also serves the reports to the web application whenever there are api calls.   
+
+#### C3: Metrics Database
+All the metrics above could be stored in a single measurement table. 
+
+Additionally, it's important for the source(i.e. Web Application) to generate the metric id so that the metrics processor can de-dupe them effectively.
+
+[metrics-ER-diagram](./resources/metrics-ER-diagram.png)
 
 ### Observability and Application Performance Management
 Internal Observability signals like logs, traces, metrics are critical for ensuring reliability and availability of the service.
