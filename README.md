@@ -19,31 +19,8 @@ Diversity Cyber council wants to build ClearView, a HR platform that performs bi
 ## System Context
 
 We will use C4 for most of the diagamrs to describe the system. ![ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format.md)
-TODO: move diagram to Lucid
 
-```mermaid
- C4Context
-    title System Context Diagram for ClearView
-
-    %% People interacting with the system
-    Person(HM, "Hiring Manager", "Users responsible for managing Job postings")
-    Person(C, "Candidate", "Users applying for Job postings")
-    Person(Admin, "Administrator", "Users responsible for managing the platform")
-
-    %% The main system
-    System(ClearView, "ClearView", "Anonymizes candidate profiles to and matches with job postings to reduce bias.")
-
-    %% External system
-    System_Ext(primaryHR, "External HR System", "External HR system")
-    System_Ext(LLM, "External LLM Provider", "External LLM provider")
-
-    %% Relationships between people and the system
-    Rel(HM, ClearView, "Manage job postings")
-    Rel(C, ClearView, "Manage profile and apply for postings")
-    Rel(Admin, ClearView, "Manage the ClearView platform")
-    Rel(ClearView, primaryHR, "Integrate with")
-    Rel(ClearView, LLM, "Use LLM provider")
-```
+![System context](resources/c1.png)
 
 The system aims to serve the following user journeys:
 
