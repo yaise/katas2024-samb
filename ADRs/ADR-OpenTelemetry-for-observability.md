@@ -1,7 +1,7 @@
 # ADR foundation
 
 ## Status
-Proposed
+Accepted
 
 ## Context
 With the rise of cloud computing, microservices architectures, and increasingly complex business requirements, the need for software and infrastructure observability is greater than ever.

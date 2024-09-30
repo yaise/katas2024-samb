@@ -18,6 +18,7 @@ Diversity Cyber council wants to build ClearView, a HR platform that performs bi
 
 ## System Context
 
+We will use C4 for most of the diagamrs to describe the system. ![ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format)
 TODO: move diagram to Lucid
 
 ```mermaid
@@ -131,7 +132,7 @@ Here is a logical model of the system that explores key entities (a logical enti
 
 **Note:** Not all relationships need to be remembered by the system.
 
-![katas2024 logical model.png](./resources/katas2024-logical-model.png)
+![katas2024 logical model.png](./resources/logical-model.png)
 
 - The system has multiple users with different roles - Candidate, Hiring Manager, DEI consultant, System Admin.
 - A user can optionally belong to an Organization.
@@ -150,7 +151,7 @@ Here is a logical model of the system that explores key entities (a logical enti
 
 ### C2: Container Diagram
 
-![C2 container diagram](resources/katas2024-c2-container.png)
+![C2 container diagram](resources/c2-container.png)
 
 _TODO: describe the blocks_
 
@@ -160,7 +161,7 @@ _TODO: describe the blocks_
 
 The C3 component diagram for the Next.js web application is as follows:
 
-![C3 Web Application](resources/katas2024-c3-web-app.png)
+![C3 Web Application](resources/c3-web-app.png)
 
 Aspects of this application:
 
@@ -177,7 +178,7 @@ Aspects of this application:
 
 ##### Related ADRs:
 
-- [Next.js and React for Web Application Stack](ADRs/ADR-04-Web-Application-Stack.md)
+- [Next.js and React for Web Application Stack](ADRs/ADR-Web-Application-Stack)
 
 #### C3: Relational Database
 
@@ -187,7 +188,7 @@ Aspects of this application:
 #### C3: Matcher Component
 
 Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be further broken down into below components:
-![matcher-c3-diagram.png](./resources/matcher-c3-diagram.png)
+![matcher-c3-diagram.png](./resources/c3-matcher.png)
 
 - **Feed Controller** - exposes internal APIs that can be used to query feed(i.e. matching candidates).
 - **Job Ingestion Controller** - exposes internal APIs that can be used ingest jobs that are ready to be matched.
@@ -206,8 +207,8 @@ Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be
 
 ##### Associated ADRs
 
-- [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-02-Use-of-message-queues-for-asynchrounous-execution.md)
-- [Use Pinecone as a Vector Database](./ADRs/ADR-03-Use-of-Pinecone-as-vector-db.md)
+- [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-Use-of-message-queues-for-asynchrounous-execution)
+- [Use Pinecone as a Vector Database](./ADRs/ADR-Use-of-Pinecone-as-vector-db)
 
 #### C3: Vector Database (TODO)
 
@@ -285,9 +286,9 @@ _TODO: add diagram_
 Internal Observability signals like logs, traces, metrics are critical for ensuring reliability and availability of the service.
 Additionally, we need a reliable way to store, visualize, and alert on these metrics. The following pieces of technology provide a comprehensive observability stack.
 
-Open Telemetry - [ADR-OpenTelemetry-for-observability](./ADRs/ADR-04-OpenTelemetry-for-observability.md) - Open Telemetry a CNCF project and pretty much the de-facto standard for collecting and transporting observability signals from the infrastructure layer all the way up to the application layer.
+Open Telemetry - [ADR-OpenTelemetry-for-observability](./ADRs/ADR-OpenTelemetry-for-observability) - Open Telemetry a CNCF project and pretty much the de-facto standard for collecting and transporting observability signals from the infrastructure layer all the way up to the application layer.
 
-Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-05-Elastic-for-observability.md)Elastic provides comprehensive set of tools for storing, searching and visualizing observability signals. It is compatible with Open Telemetry. 
+Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-Elastic-for-observability)Elastic provides comprehensive set of tools for storing, searching and visualizing observability signals. It is compatible with Open Telemetry. 
 
 PagerDuty - PagerDuty is pretty much the de-facto standard for building an alert based notification system for ensuring timely and proactive responses to operational issues.
 

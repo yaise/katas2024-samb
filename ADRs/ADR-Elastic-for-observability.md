@@ -1,7 +1,7 @@
 # ADR foundation
 
 ## Status
-Proposed
+Accepted
 
 ## Context
 We must choose a way to store, report and alert on observability signals(logs, traces, metrics) from our services and infrastructure.

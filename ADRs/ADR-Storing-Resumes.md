@@ -2,7 +2,7 @@
 
 ## Status
 
-_PENDING_
+Accepted
 
 ## Context
 
@@ -12,6 +12,3 @@ Candidates will upload resumes to ClearView. These resumes will typically be PDF
 
 We will store these resumes in a file-store service like AWS S3. There's equivalent file store services across cloud providers.
 
-## Consequences
-
-We will have a commiment to using a cloud-hosted, cloud vendor-specific service.
