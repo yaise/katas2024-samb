@@ -100,6 +100,11 @@ We chose Accuracy, Interoperability and Reliability (Composite of availability, 
 - The System caters to the US market and runs in a hosted cloud provider like AWS.
 
 ## Solution
+
+TODO: summary
+
+Our solution is to implement a ...
+
 ### Logical Model
 Here is a logical model of the system that explores key entities (a logical entity and not necessarily one from database parlance) and their relationships that need to be remembered to inform APIs and data models.
 
