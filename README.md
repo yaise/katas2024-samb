@@ -304,10 +304,10 @@ PagerDuty - PagerDuty is pretty much the de-facto standard for building an alert
 ![architecture-styles-worksheet](./resources/architecture-styles-worksheet.png)
 TODO - Add some blurb here. 
 
-## TODO - Conclusion
-Does it demonstrate the characteristics ?
-Is the solution appropriate and feasible ?
-Are the Arch styles represented in the solution ?
+## Conclusion
+We believe our solution is simple to implement and go live with. 
+It has enough modularity that things can be pulled out into separate services if required. 
+While we didn't talk about a deployment model in detail, we envision this solution being implemented and deployed in a Kubernetes environment using managed services from AWS. Therefore, horizontal and vertical scaling should be possible to do with minimal effort.
 
 ## References
 
