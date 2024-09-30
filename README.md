@@ -80,11 +80,11 @@ The following is a list of distilled requirements
 ### Architectural Characteristics
 
 ![architectural-context](./resources/arch-characteristics.png)
-We chose Accuracy, Interoperability and Reliability (Composite of availability, testability, data integrity, data consistency, fault tolerance) as the driving architectural characteristics.
+We chose Reliability (Composite of availability, testability, data integrity, data consistency, fault tolerance), Accuracy, and Simplicity as the driving architectural characteristics.
 
 - Reliability - Any cloud based software system must be available even when faults occur. Data integrity and consistency is key for any system that remembers/stores data. Testability is important for high quality and frequent software delivery.
 - Accuracy - LLM models can hallucinate (i.e. give incorrect answers). It is important for the LLM to NOT omit key pieces of information when creating the SMART summaries. Additionally, it MUST remove bias factors from the anonymized candidate profiles.
-- Interoperability - Given that this is a supplemental HR system, we want the components to be API driven so that connectivity and data transfer can be achieved in a standardized way with external HR systems. Additionally, intra system communication.
+- Simplicity - We want the system to be simple to develop, and operate and yet extensible as the scale comes. 
 
 ## TODO - Assumptions
 
@@ -301,8 +301,13 @@ Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-Elastic-for-o
 PagerDuty - PagerDuty is pretty much the de-facto standard for building an alert based notification system for ensuring timely and proactive responses to operational issues.
 
 ## Architectural Style
+![architecture-styles-worksheet](./resources/architecture-styles-worksheet.png)
+TODO - Add some blurb here. 
 
-TODO: Reference https://www.developertoarchitect.com/downloads/architecture-styles-worksheet.pdf and our priorities and state where we landed
+## TODO - Conclusion
+Does it demonstrate the characteristics ?
+Is the solution appropriate and feasible ?
+Are the Arch styles represented in the solution ?
 
 ## References
 
