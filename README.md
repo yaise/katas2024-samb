@@ -18,7 +18,7 @@ Diversity Cyber council wants to build ClearView, a HR platform that performs bi
 
 ## System Context
 
-We will use C4 for most of the diagrams to describe the system. ![ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format)
+We will use C4 for most of the diagamrs to describe the system. ![ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format.md)
 TODO: move diagram to Lucid
 
 ```mermaid
@@ -189,7 +189,7 @@ Aspects of this application:
 
 ##### Related ADRs:
 
-- [Next.js and React for Web Application Stack](ADRs/ADR-Web-Application-Stack)
+- [Next.js and React for Web Application Stack](ADRs/ADR-Web-Application-Stack.md)
 
 #### C3: Relational Database
 
@@ -198,7 +198,8 @@ Aspects of this application:
 ### Matcher
 #### C3: Matcher Component
 
-Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be further broken down into below components:
+The C3 component diagram for the matcher is as follows:
+
 ![matcher-c3-diagram.png](./resources/c3-matcher.png)
 
 - **Feed Controller** - exposes internal APIs that can be used to query feed(i.e. matching candidates).
@@ -216,10 +217,10 @@ Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be
     - Register a message type
     - Provides API to define **Runnables** that should be executed when the message is delivered.
 
-##### Associated ADRs
+##### Related ADRs
 
-- [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-Use-of-message-queues-for-asynchrounous-execution)
-- [Use Pinecone as a Vector Database](./ADRs/ADR-Use-of-Pinecone-as-vector-db)
+- [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-Use-of-message-queues-for-asynchrounous-execution.md)
+- [Use Pinecone as a Vector Database](./ADRs/ADR-Use-of-Pinecone-as-vector-db.md)
 
 #### C3: Vector Database (TODO)
 
@@ -286,6 +287,7 @@ The write patterns are a function of the frequency at which hiring managers eval
 
 The read patterns are again a function of Employer Admins reviewing these metrics. We assume that this is also not super frequent. There is however a regular cadence of the monthly report generation.
 #### C3 : Metrics Processor Component
+The C3 component diagram for the metrics component is as follows:
 ![C3 Metrics Component](resources/c3-metrics-processor.png)
 It would be web applications responsibility to enqueue events whenever a candidate's state changes. We re-use the message queue for the sake of simplicity(order of the events does not matter).
 The Message Processor would be responsible for draining these metrics from the queue and persisting them in a time series db.
@@ -297,9 +299,9 @@ _TODO: add diagram_
 Internal Observability signals like logs, traces, metrics are critical for ensuring reliability and availability of the service.
 Additionally, we need a reliable way to store, visualize, and alert on these metrics. The following pieces of technology provide a comprehensive observability stack.
 
-Open Telemetry - [ADR-OpenTelemetry-for-observability](./ADRs/ADR-OpenTelemetry-for-observability) - Open Telemetry a CNCF project and pretty much the de-facto standard for collecting and transporting observability signals from the infrastructure layer all the way up to the application layer.
+Open Telemetry - [ADR-OpenTelemetry-for-observability](./ADRs/ADR-OpenTelemetry-for-observability.md) - Open Telemetry a CNCF project and pretty much the de-facto standard for collecting and transporting observability signals from the infrastructure layer all the way up to the application layer.
 
-Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-Elastic-for-observability)Elastic provides comprehensive set of tools for storing, searching and visualizing observability signals. It is compatible with Open Telemetry. 
+Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-Elastic-for-observability.md)Elastic provides comprehensive set of tools for storing, searching and visualizing observability signals. It is compatible with Open Telemetry. 
 
 PagerDuty - PagerDuty is pretty much the de-facto standard for building an alert based notification system for ensuring timely and proactive responses to operational issues.
 
