@@ -186,8 +186,7 @@ Aspects of this application:
  
 ### Matcher
 #### C3: Matcher Component
-
-Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be further broken down into below components:
+The C3 component diagram for the matcher is as follows:
 ![matcher-c3-diagram.png](./resources/c3-matcher.png)
 
 - **Feed Controller** - exposes internal APIs that can be used to query feed(i.e. matching candidates).
@@ -205,7 +204,7 @@ Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be
     - Register a message type
     - Provides API to define **Runnables** that should be executed when the message is delivered.
 
-##### Associated ADRs
+##### Related ADRs
 
 - [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-Use-of-message-queues-for-asynchrounous-execution)
 - [Use Pinecone as a Vector Database](./ADRs/ADR-Use-of-Pinecone-as-vector-db)
@@ -275,6 +274,7 @@ The write patterns are a function of the frequency at which hiring managers eval
 
 The read patterns are again a function of Employer Admins reviewing these metrics. We assume that this is also not super frequent. There is however a regular cadence of the monthly report generation.
 #### C3 : Metrics Processor Component
+The C3 component diagram for the metrics component is as follows:
 ![C3 Metrics Component](resources/c3-metrics-processor.png)
 It would be web applications responsibility to enqueue events whenever a candidate's state changes. We re-use the message queue for the sake of simplicity(order of the events does not matter).
 The Message Processor would be responsible for draining these metrics from the queue and persisting them in a time series db.
