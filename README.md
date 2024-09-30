@@ -18,7 +18,7 @@ Diversity Cyber council wants to build ClearView, a HR platform that performs bi
 
 ## System Context
 
-We will use C4 for most of the diagamrs to describe the system. ![ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format)
+We will use C4 for most of the diagamrs to describe the system. ![ADR-Architectural-Design-Format](./ADRs/ADR-Architectural-Design-Format.md)
 TODO: move diagram to Lucid
 
 ```mermaid
@@ -178,7 +178,7 @@ Aspects of this application:
 
 ##### Related ADRs:
 
-- [Next.js and React for Web Application Stack](ADRs/ADR-Web-Application-Stack.pdf)
+- [Next.js and React for Web Application Stack](ADRs/ADR-Web-Application-Stack.md)
 
 #### C3: Relational Database
 
@@ -187,7 +187,7 @@ Aspects of this application:
 ### Matcher
 #### C3: Matcher Component
 
-Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be further broken down into below components:
+Matcher container as illustrated in [C2 Model](#c2-container-diagram) can be further broken down into below components:
 ![matcher-c3-diagram.png](./resources/c3-matcher.png)
 
 - **Feed Controller** - exposes internal APIs that can be used to query feed(i.e. matching candidates).
@@ -207,8 +207,8 @@ Matcher container as illustrated in [C2 Model](#WIP-C2-Container-Diagram) can be
 
 ##### Associated ADRs
 
-- [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-Use-of-message-queues-for-asynchrounous-execution)
-- [Use Pinecone as a Vector Database](./ADRs/ADR-Use-of-Pinecone-as-vector-db)
+- [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-Use-of-message-queues-for-asynchrounous-execution.md)
+- [Use Pinecone as a Vector Database](./ADRs/ADR-Use-of-Pinecone-as-vector-db.md)
 
 #### C3: Vector Database (TODO)
 
@@ -286,9 +286,9 @@ _TODO: add diagram_
 Internal Observability signals like logs, traces, metrics are critical for ensuring reliability and availability of the service.
 Additionally, we need a reliable way to store, visualize, and alert on these metrics. The following pieces of technology provide a comprehensive observability stack.
 
-Open Telemetry - [ADR-OpenTelemetry-for-observability](./ADRs/ADR-OpenTelemetry-for-observability) - Open Telemetry a CNCF project and pretty much the de-facto standard for collecting and transporting observability signals from the infrastructure layer all the way up to the application layer.
+Open Telemetry - [ADR-OpenTelemetry-for-observability](./ADRs/ADR-OpenTelemetry-for-observability.md) - Open Telemetry a CNCF project and pretty much the de-facto standard for collecting and transporting observability signals from the infrastructure layer all the way up to the application layer.
 
-Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-Elastic-for-observability)Elastic provides comprehensive set of tools for storing, searching and visualizing observability signals. It is compatible with Open Telemetry. 
+Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-Elastic-for-observability.md)Elastic provides comprehensive set of tools for storing, searching and visualizing observability signals. It is compatible with Open Telemetry. 
 
 PagerDuty - PagerDuty is pretty much the de-facto standard for building an alert based notification system for ensuring timely and proactive responses to operational issues.
 
