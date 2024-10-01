@@ -295,22 +295,26 @@ The write patterns are a function of the frequency at which hiring managers eval
 
 The read patterns are again a function of Employer Admins reviewing these metrics. We assume that this is also not super frequent. There is however a regular cadence of the monthly report generation.
 
+Metrics are immutable and self-contained i.e. in addition to ids, they contain the necessary pieces of labels and information.    
 #### C3 : Metrics Processor Component
 
 The C3 component diagram for the metrics component is as follows:
 ![C3 Metrics Component](resources/c3-metrics-processor.png)
-It would be web applications responsibility to enqueue events whenever a candidate's state changes. We re-use the message queue for the sake of simplicity(order of the events does not matter).
+It would be web applications responsibility to enqueue events whenever a candidate's state changes. We re-use the message queue container for the sake of simplicity(order of the events does not matter).
 
 - The Message Processor would be responsible for draining these metrics from the queue and persisting them in a time series db.
 - The Reports Processor is a component that generates that queries the time series db and generates reports at a system configured frequency and stores them in the file store. It also serves the reports to the web application whenever there are api calls.
 
 #### C3: Metrics Database
 
-All the metrics above could be stored in a single measurement table.
+All the metrics above could be stored in a single measurement table in a time series database. 
 
 Additionally, it's important for the source(i.e. Web Application) to generate the metric id so that the metrics processor can de-dupe them effectively.
 
 [metrics-ER-diagram](./resources/metrics-ER-diagram.png)
+
+##### Related ADRs
+[ADR-Use-of-TimeSeries-for-metrics](./ADRs/ADR-Use-of-TimeSeries-for-metrics.md)
 
 ### Observability and Application Performance Management
 
