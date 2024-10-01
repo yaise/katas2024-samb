@@ -86,13 +86,20 @@ We chose Reliability (Composite of availability, testability, data integrity, da
 - Accuracy - LLM models can hallucinate (i.e. give incorrect answers). It is important for the LLM to NOT omit key pieces of information when creating the SMART summaries. Additionally, it MUST remove bias factors from the anonymized candidate profiles.
 - Simplicity - We want the system to be simple to develop, and operate and yet extensible as the scale comes. 
 
-## TODO - Assumptions
-
-- The platform relies on the availability of APIs from HR systems for integration.
-- The Admin user is part of the Employer similar to a hiring manager.
+## - Assumptions
+- ClearView System controls what it treats as biasing factors. Employers can not choose/customize the factors for them.
+- The platform relies on the public APIs/SDKs from HR systems for integration.
+- There are two kinds of admin users:
+  - Admin for an employer: Has access to the data/metric/reports within the employer it belongs to.
+  - Admin for clear view: Has access to the data/metric/reports across all the employers.
 - The Hiring manager is also the interviewer for the purposes of surveys.
 - The System caters to the US market and runs in a hosted cloud provider like AWS.
-
+- Employers can sign up themselves.
+  - A ClearView admin will review and approve employers registration requests.
+-  Candidates can sign up individuals. 
+  - Clearview system should be able to automatically verify candidates via One Time Password.  
+  
+  
 ## Solution
 
 We propose a comprehensive design for the ClearView system that meets all specified requirements. The solution involves building a web application that manages the presentation, business logic, and data persistence layers. Key features, such as AI, storage, billing, and identity verification, will be outsourced to reliable, best-in-class external services, allowing us to focus on developing core ClearView functionalities in-house. The system will leverage modern, scalable technologies, including Next.js for frontend and backend development and cloud-based services for hosting and data management. Integration with popular HR platforms will be facilitated via standard REST APIs, ensuring seamless interoperability and future scalability.
@@ -200,19 +207,23 @@ The C3 component diagram for the matcher is as follows:
 - **Embedding Processor** - Queries generated embeddings from external llm provider via llm gateway after a delay
   and stores them in vector db when embeddings are available.
 - **Persistence Layer** - Provide abstraction over specific vector db provider/implementation.
-  - **Message Queue API** - Provides abstraction over specific message queue implementation/choice.
-    - Provides API to publish a message(optionally with a delay)
-    - Register a message type
-    - Provides API to define **Runnables** that should be executed when the message is delivered.
+- **Message Queue API** - Provides abstraction over specific message queue implementation/choice.
+  - Provides API to publish a message(optionally with a delay)
+  - Register a message type
+  - Provides API to define **Runnables** that should be executed when the message is delivered.
 
 ##### Related ADRs
 
 - [Use Message Queue for Asynchronous Workflows in ClearView](./ADRs/ADR-Use-of-message-queues-for-asynchrounous-execution.md)
 - [Use Pinecone as a Vector Database](./ADRs/ADR-Use-of-Pinecone-as-vector-db.md)
 
-#### C3: Vector Database (TODO)
-
-_TODO: add diagram_
+#### C3: Vector Database
+Every Job Id(and Candidate Id) and their respective embeddings would each be represented by a vector in the database.
+Additionally, Each Vector would have additional attributes:
+ - **vectorType** : candidate or job)
+ - 
+Most vector databases support euclidean, cosine and dotproduct. The selection of most efficient algorithms would require 
+running experiments on real data via some sort of canary in the matcher.  
 
 ### Metrics
 We need to collect metrics based on certain events within the system to be able to generate aggregate dashboards for the Candidates, and Employers, and ClearView Admins.
