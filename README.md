@@ -191,8 +191,8 @@ The C3 component diagram for the matcher is as follows:
 ![matcher-c3-diagram.png](./resources/c3-matcher.png)
 
 - **Feed Controller** - exposes internal APIs that can be used to query feed(i.e. matching candidates).
-- **Job Ingestion Controller** - exposes internal APIs that can be used ingest jobs that are ready to be matched.
-- **Resume Ingestion Controller** - exposes internal APIs that can be used to ingest "Smart Resumes" that are ready to be matched.
+- **Post Ready Event Handler** - exposes internal APIs that can be used ingest jobs that are ready to be matched.
+- **Candidate Ready Event Handler** - exposes internal APIs that can be used to ingest "Smart Resumes" that are ready to be matched.
 - **Embedding Service** - abstracts away complexity of choosing the right model and algorithm that is needed for
   embedding generation for the given use case.
 - **Matching Service** - Responsible to generate feed by performing vector based matching by using capabilities provided
@@ -304,10 +304,10 @@ PagerDuty - PagerDuty is pretty much the de-facto standard for building an alert
 ![architecture-styles-worksheet](./resources/architecture-styles-worksheet.png)
 TODO - Add some blurb here. 
 
-## TODO - Conclusion
-Does it demonstrate the characteristics ?
-Is the solution appropriate and feasible ?
-Are the Arch styles represented in the solution ?
+## Conclusion
+We believe our solution is simple to implement and go live with. 
+It has enough modularity that things can be pulled out into separate services if required. 
+While we didn't talk about a deployment model in detail, we envision this solution being implemented and deployed in a Kubernetes environment using managed services from AWS. Therefore, horizontal and vertical scaling should be possible to do with minimal effort.
 
 ## References
 
