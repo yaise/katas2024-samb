@@ -82,13 +82,14 @@ The following is a list of distilled requirements
 ### Architectural Characteristics
 
 ![architectural-context](./resources/arch-characteristics.png)
+
 We chose Reliability (Composite of availability, testability, data integrity, data consistency, fault tolerance), Accuracy, and Simplicity as the driving architectural characteristics.
 
 - Reliability - Any cloud based software system must be available even when faults occur. Data integrity and consistency is key for any system that remembers/stores data. Testability is important for high quality and frequent software delivery.
 - Accuracy - LLM models can hallucinate (i.e. give incorrect answers). It is important for the LLM to NOT omit key pieces of information when creating the SMART summaries. Additionally, it MUST remove bias factors from the anonymized candidate profiles.
 - Simplicity - We want the system to be simple to develop, and operate and yet extensible as the scale comes.
 
-## - Assumptions
+## Assumptions
 - ClearView System controls what it treats as biasing factors. Employers can not choose/customize the factors for them.
 - The platform relies on the public APIs/SDKs from HR systems for integration.
 - There are two kinds of admin users:
@@ -188,7 +189,8 @@ Aspects of this application:
 
 ##### Related ADRs:
 
-- [Next.js and React for Web Application Stack](ADRs/ADR-Web-Application-Stack.md)
+- [ADR-Web-Application-Stack](ADRs/ADR-Web-Application-Stack.md)
+- [ADR-External-LLM](ADRs/ADR-External-LLM.md)
 
 #### C3: Relational Database
 
