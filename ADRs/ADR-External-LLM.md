@@ -17,7 +17,7 @@ need for internal development or maintenance.
 and reducing internal infrastructure needs. 
 
 - All Outbound calls to external LLM will be routed via External LLM Gateway so that we are not locked into a specific vendor
-and have ability to integrate/switch with one or more external LLM provider without effecting any of the consumers of the models. 
+and have ability to integrate/switch between one or more external LLM provider without effecting any of the consumers of the models. 
 
 ### **Rationale**
 - **Access to Advanced Models**: External providers offer sophisticated LLMs optimized for tasks such as language understanding and matching.
