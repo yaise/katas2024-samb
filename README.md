@@ -217,7 +217,7 @@ It can further be broken on below components:
 - [Use Pinecone as a Vector Database](./ADRs/ADR-Use-of-Pinecone-as-vector-db.md)
 
 #### C3: Vector Database
-Every Job Id(and Candidate Id) and their respective embeddings would each be represented by a vector in the database.
+Every Job Id (and Candidate Id) and their respective embeddings would each be represented by a vector in the database.
 Additionally, Each Vector would have additional attributes:
  - **vectorType** : candidate or job)
 
