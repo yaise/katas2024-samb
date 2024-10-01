@@ -191,8 +191,8 @@ The C3 component diagram for the matcher is as follows:
 ![matcher-c3-diagram.png](./resources/c3-matcher.png)
 
 - **Feed Controller** - exposes internal APIs that can be used to query feed(i.e. matching candidates).
-- **Job Ingestion Controller** - exposes internal APIs that can be used ingest jobs that are ready to be matched.
-- **Resume Ingestion Controller** - exposes internal APIs that can be used to ingest "Smart Resumes" that are ready to be matched.
+- **Post Ready Event Handler** - exposes internal APIs that can be used ingest jobs that are ready to be matched.
+- **Candidate Ready Event Handler** - exposes internal APIs that can be used to ingest "Smart Resumes" that are ready to be matched.
 - **Embedding Service** - abstracts away complexity of choosing the right model and algorithm that is needed for
   embedding generation for the given use case.
 - **Matching Service** - Responsible to generate feed by performing vector based matching by using capabilities provided
