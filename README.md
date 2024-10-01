@@ -97,8 +97,8 @@ We chose Reliability (Composite of availability, testability, data integrity, da
 - Employers can sign up themselves.
   - A ClearView admin will review and approve employers registration requests.
 -  Candidates can sign up individuals. 
-  - Clearview system should be able to automatically verify candidates via One Time Password.  
-  
+  - Clearview system should be able to automatically verify candidates via One Time Password.
+- The resume should be in a text-based PDF format using UTF-8 encoding.
   
 ## Solution
 
