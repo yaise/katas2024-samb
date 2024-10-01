@@ -1,7 +1,7 @@
 # Use Pinecone as a Vector Database
 
 ## Status
-**Proposed**
+**Accepted**
 
 ## Context
 We plan to use vector based search to efficiently match candidates with the job listings/employers. To ensure efficient,
