@@ -1,7 +1,7 @@
 # Use Message Queue for Asynchronous Workflows in ClearView
 
 ## Status
-**Proposed**
+**Accepted**
 
 ## Context
 ClearView has multiple use cases that involve resource-intensive, time-consuming computations that can be offloaded for asynchronous processing without affecting the user experience. Additionally, many LLM providers offer bulk embedding generation APIs, which can take up to 24 hours but are more cost-effective compared to immediate embedding generation. To ensure scalability and cost efficiency, it is essential to implement message queues in the solution.
