@@ -168,7 +168,7 @@ Aspects of this application:
 - **Routes** - routes contain the UI components and business logic for the particular route.
   - **Resumes route** - this handles all requests related to resumes: uploading, managing, viewing as well as summarizing and viewing suggestions.
     - For the user to see SMART tips, the LLM gateway is called. To generate a SMART summary of the resume, we use a prompt for extracting SMART tips and recommendations, then show that to the user, so they can update their resume.
-    - Once the user marks the resume as "ready" to be submitted, the resume is anonymized and and a SMART summary is generated via the LLM gateway, then passed to the [Matcher](#matcher) service for further processing.
+    - Once the user marks the resume as "ready" to be submitted, the resume is anonymized, bias is removed and a SMART summary is generated via the LLM gateway, then passed to the [Matcher](#matcher) service for further processing.
   - **Sign in route** - handles the authentication-specific requests for establishing user sessions. This also handles password resets and other user registration issues.
   - **Metrics route** - handles viewing and analyzing various metrics about ClearView.
   - **Billing route** - handles everything relating to billing and charging customers for resumes.
