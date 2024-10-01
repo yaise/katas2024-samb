@@ -7,14 +7,16 @@ Diversity Cyber Council (https://www.diversitycybercouncil.com/) is a 501c3 Non-
 Diversity Cyber council wants to build ClearView, a HR platform that performs bias-free matching of candidate resumes with potential Employers. Additionally, it will have capabilities for data/metrics collection, aggregation and reporting. It will also integrate with external HR systems.
 
 ## Definitions, Acronyms, and Abbreviations
-| Term | Definition                        |
-|------|-----------------------------------|
-| DEI  | Diversity, Equity, and Inclusion  |
-| ATS  | Applicant Tracking System         |
-| LLM  | Large Language Model              |
-| HR   | Human Resource                    |
-| KPI  | Key Performance Indicator         |
-| CNCF | Cloud Native Computing Foundation |
+
+| Term       | Definition                        |
+| ---------- | --------------------------------- |
+| DEI        | Diversity, Equity, and Inclusion  |
+| ATS        | Applicant Tracking System         |
+| LLM        | Large Language Model              |
+| HR         | Human Resource                    |
+| KPI        | Key Performance Indicator         |
+| CNCF       | Cloud Native Computing Foundation |
+| Anonymized | Bias is removed                   |
 
 ## System Context
 
@@ -84,7 +86,7 @@ We chose Reliability (Composite of availability, testability, data integrity, da
 
 - Reliability - Any cloud based software system must be available even when faults occur. Data integrity and consistency is key for any system that remembers/stores data. Testability is important for high quality and frequent software delivery.
 - Accuracy - LLM models can hallucinate (i.e. give incorrect answers). It is important for the LLM to NOT omit key pieces of information when creating the SMART summaries. Additionally, it MUST remove bias factors from the anonymized candidate profiles.
-- Simplicity - We want the system to be simple to develop, and operate and yet extensible as the scale comes. 
+- Simplicity - We want the system to be simple to develop, and operate and yet extensible as the scale comes.
 
 ## TODO - Assumptions
 
@@ -96,8 +98,6 @@ We chose Reliability (Composite of availability, testability, data integrity, da
 ## Solution
 
 We propose a comprehensive design for the ClearView system that meets all specified requirements. The solution involves building a web application that manages the presentation, business logic, and data persistence layers. Key features, such as AI, storage, billing, and identity verification, will be outsourced to reliable, best-in-class external services, allowing us to focus on developing core ClearView functionalities in-house. The system will leverage modern, scalable technologies, including Next.js for frontend and backend development and cloud-based services for hosting and data management. Integration with popular HR platforms will be facilitated via standard REST APIs, ensuring seamless interoperability and future scalability.
-
-
 
 ### Logical Model
 
@@ -167,10 +167,14 @@ Aspects of this application:
 - **Next.js router** - this is the server-side routing of requests into the Node.js server. Next.js has file-based routing that will be used.
 - **Routes** - routes contain the UI components and business logic for the particular route.
   - **Resumes route** - this handles all requests related to resumes: uploading, managing, viewing as well as summarizing and viewing suggestions.
+    - Resumes are uploaded via this route, parsing them using open source to convert them to text.
+    - For the user to see an anonymized version of their resume in SMART format, the LLM gateway is called. We need to send an appropriate prompt to do this. The user does not modify the prompt, they only modify their resume. The result of the call to the LLM is persisted to the database through the persistence layer.
+    - The candidate marks themselves (and their resume) as "active" and the resume is marked as "active" in the database. This triggers the [Matcher](#matcher) service for further processing (vectorization).
   - **Sign in route** - handles the authentication-specific requests for establishing user sessions. This also handles password resets and other user registration issues.
   - **Metrics route** - handles viewing and analyzing various metrics about ClearView.
   - **Billing route** - handles everything relating to billing and charging customers for resumes.
   - **Matches route** - exposes the ability to query matches for job descriptions and resumes.
+    - This queries the [matcher](#matcher) service for any
   - **Jobs route** - handles requests about jobs and descriptions. This allows CRUD on job descriptions.
 - **Persistence layer** - abstracts persistence to database/file store.
 - **Metrics layer** - abstracts persistence and querying of metrics.
@@ -182,8 +186,9 @@ Aspects of this application:
 #### C3: Relational Database
 
 ![ER diagram](resources/ERD.png)
- 
+
 ### Matcher
+
 #### C3: Matcher Component
 
 The C3 component diagram for the matcher is as follows:
@@ -215,59 +220,62 @@ The C3 component diagram for the matcher is as follows:
 _TODO: add diagram_
 
 ### Metrics
+
 We need to collect metrics based on certain events within the system to be able to generate aggregate dashboards for the Candidates, and Employers, and ClearView Admins.
 
 The key events and their respective attributes are as follows
-- Unlock Candidate (Hiring manger making a payment ot unlock a candidate) 
-    - ```timestamp``` 
-    - ```candidateId```
-    - ```candidateName```
-    - ```hiringManagerId```
-    - ```hiringManagerName```
-    - ```jobPostingId```
-    - ```jobTitle```
-    - ```employerId```
-    - ```employerName```
+
+- Unlock Candidate (Hiring manger making a payment ot unlock a candidate)
+  - `timestamp`
+  - `candidateId`
+  - `candidateName`
+  - `hiringManagerId`
+  - `hiringManagerName`
+  - `jobPostingId`
+  - `jobTitle`
+  - `employerId`
+  - `employerName`
 - Select Candidate (Hiring manager selecting a candidate for pursuing)
-    - ```timestamp```
-    - ```candidateId```
-    - ```candidateName```
-    - ```hiringManagerId```
-    - ```hiringManagerName```
-    - ```jobPostingId```
-    - ```jobTitle```
-    - ```employerId```
-    - ```employerName```
+  - `timestamp`
+  - `candidateId`
+  - `candidateName`
+  - `hiringManagerId`
+  - `hiringManagerName`
+  - `jobPostingId`
+  - `jobTitle`
+  - `employerId`
+  - `employerName`
 - Confirm Candidate (Hiring manager confirming a candidate as hired)
-    - ```timestamp```
-    - ```candidateId```
-    - ```candidateName```
-    - ```hiringManagerId```
-    - ```hiringManagerName```
-    - ```jobPostingId```
-    - ```jobTitle```
-    - ```employerId```
-    - ```employerName```
-    - ```<demographic attirbutes>(see below)```
+  - `timestamp`
+  - `candidateId`
+  - `candidateName`
+  - `hiringManagerId`
+  - `hiringManagerName`
+  - `jobPostingId`
+  - `jobTitle`
+  - `employerId`
+  - `employerName`
+  - `<demographic attirbutes>(see below)`
 - Reject Candidate (Hiring manager rejecting a candidate)
-    - ```timestamp```
-    - ```candidateId```
-    - ```candidateName```
-    - ```hiringManagerId```
-    - ```hiringManagerName```
-    - ```jobPostingId```
-    - ```jobTitle```
-    - ```employerId```
-    - ```employerName```
-    - ```<demographic attirbutes>(see below)```
+  - `timestamp`
+  - `candidateId`
+  - `candidateName`
+  - `hiringManagerId`
+  - `hiringManagerName`
+  - `jobPostingId`
+  - `jobTitle`
+  - `employerId`
+  - `employerName`
+  - `<demographic attirbutes>(see below)`
 
 Key Demographic attributes
-- ```candidateGender``` -  Male, female, non-binary.
-- ```candidateEdLevel``` - High school, bachelor's degree, master's degree, etc.
-- ```candidateOccupation``` - Job titles, industries, or employment status.
-- ```candidateLocation``` - Country, state, city, or specific regions.
-- ```candidateRace``` - Various ethnic or racial backgrounds.
-- ```candidateLanguage``` - Primary language spoken.
+
+- `candidateGender` - Male, female, non-binary.
+- `candidateEdLevel` - High school, bachelor's degree, master's degree, etc.
+- `candidateOccupation` - Job titles, industries, or employment status.
+- `candidateLocation` - Country, state, city, or specific regions.
+- `candidateRace` - Various ethnic or racial backgrounds.
+- `candidateLanguage` - Primary language spoken.
 
 The key thing to note in all the above metrics is that they're all captured when a Candidate's status changes(i.e. unlock , select , confirm, or reject candidate) and these all happen when an Employer(Hiring manger/Admin) use the web application ( aka api calls as part of the system).
 
@@ -276,37 +284,43 @@ The write patterns are a function of the frequency at which hiring managers eval
 The read patterns are again a function of Employer Admins reviewing these metrics. We assume that this is also not super frequent. There is however a regular cadence of the monthly report generation.
 
 #### C3 : Metrics Processor Component
+
 The C3 component diagram for the metrics component is as follows:
 ![C3 Metrics Component](resources/c3-metrics-processor.png)
 It would be web applications responsibility to enqueue events whenever a candidate's state changes. We re-use the message queue for the sake of simplicity(order of the events does not matter).
 
 - The Message Processor would be responsible for draining these metrics from the queue and persisting them in a time series db.
-- The Reports Processor is a component that generates that queries the time series db and generates reports at a system configured frequency and stores them in the file store. It also serves the reports to the web application whenever there are api calls.   
+- The Reports Processor is a component that generates that queries the time series db and generates reports at a system configured frequency and stores them in the file store. It also serves the reports to the web application whenever there are api calls.
 
 #### C3: Metrics Database
-All the metrics above could be stored in a single measurement table. 
+
+All the metrics above could be stored in a single measurement table.
 
 Additionally, it's important for the source(i.e. Web Application) to generate the metric id so that the metrics processor can de-dupe them effectively.
 
 [metrics-ER-diagram](./resources/metrics-ER-diagram.png)
 
 ### Observability and Application Performance Management
+
 Internal Observability signals like logs, traces, metrics are critical for ensuring reliability and availability of the service.
 Additionally, we need a reliable way to store, visualize, and alert on these metrics. The following pieces of technology provide a comprehensive observability stack.
 
 Open Telemetry - [ADR-OpenTelemetry-for-observability](./ADRs/ADR-OpenTelemetry-for-observability.md) - Open Telemetry a CNCF project and pretty much the de-facto standard for collecting and transporting observability signals from the infrastructure layer all the way up to the application layer.
 
-Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-Elastic-for-observability.md)Elastic provides comprehensive set of tools for storing, searching and visualizing observability signals. It is compatible with Open Telemetry. 
+Elastic Observability - [ADR-Elastic-for-observability](./ADRs/ADR-Elastic-for-observability.md)Elastic provides comprehensive set of tools for storing, searching and visualizing observability signals. It is compatible with Open Telemetry.
 
 PagerDuty - PagerDuty is pretty much the de-facto standard for building an alert based notification system for ensuring timely and proactive responses to operational issues.
 
 ## Architectural Style
+
+We chose simplicity, reliability and accuracy in the [architectural characteristics](#architectural-characteristics). Service-based architecture seemed the best solution while maintaining some level of simplicity. By choosing Next.js for the front end and web [application](#application), this fits with a simple experience. We then have supporting services and databases utilized by the Next.js backend. This also gives us some flexibility later to extract out any logic that starts to get complex into their own supporting services.
+
 ![architecture-styles-worksheet](./resources/architecture-styles-worksheet.png)
-TODO - Add some blurb here. 
 
 ## Conclusion
-We believe our solution is simple to implement and go live with. 
-It has enough modularity that things can be pulled out into separate services if required. 
+
+We believe our solution is simple to implement and go live with.
+It has enough modularity that things can be pulled out into separate services if required.
 While we didn't talk about a deployment model in detail, we envision this solution being implemented and deployed in a Kubernetes environment using managed services from AWS. Therefore, horizontal and vertical scaling should be possible to do with minimal effort.
 
 ## References
