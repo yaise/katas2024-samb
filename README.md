@@ -192,9 +192,8 @@ Aspects of this application:
  
 ### Matcher
 #### C3: Matcher Component
-
-The C3 component diagram for the matcher is as follows:
-
+The Matcher is a component responsible for generating candidate matches based on anonymized profiles and job data provided by the application.
+It can further be broken on below components:
 ![matcher-c3-diagram.png](./resources/c3-matcher.png)
 
 - **Feed Controller** - exposes internal APIs that can be used to query feed(i.e. matching candidates).
@@ -221,7 +220,7 @@ The C3 component diagram for the matcher is as follows:
 Every Job Id(and Candidate Id) and their respective embeddings would each be represented by a vector in the database.
 Additionally, Each Vector would have additional attributes:
  - **vectorType** : candidate or job)
- - 
+
 Most vector databases support euclidean, cosine and dotproduct. The selection of most efficient algorithms would require 
 running experiments on real data via some sort of canary in the matcher.  
 
