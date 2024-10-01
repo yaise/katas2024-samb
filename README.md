@@ -182,7 +182,7 @@ Aspects of this application:
   - **Metrics route** - handles viewing and analyzing various metrics about ClearView.
   - **Billing route** - handles everything relating to billing and charging customers for resumes.
   - **Matches route** - exposes the ability to query matches for job descriptions and resumes.
-    - This queries the [matcher](#matcher) service for any
+    - This queries the [matcher](#matcher) service.
   - **Jobs route** - handles requests about jobs and descriptions. This allows CRUD on job descriptions.
 - **Persistence layer** - abstracts persistence to database/file store.
 - **Metrics layer** - abstracts persistence and querying of metrics.
@@ -289,9 +289,9 @@ Key Demographic attributes
 - `candidateRace` - Various ethnic or racial backgrounds.
 - `candidateLanguage` - Primary language spoken.
 
-The key thing to note in all the above metrics is that they're all captured when a Candidate's status changes(i.e. unlock , select , confirm, or reject candidate) and these all happen when an Employer(Hiring manger/Admin) use the web application ( aka api calls as part of the system).
+The key thing to note in all the above metrics is that they're all captured when a Candidate's status changes(i.e. unlock , select , confirm, or reject candidate) and these all happen when an Employer(Hiring manger/Admin) use the web application (aka api calls as part of the system).
 
-The write patterns are a function of the frequency at which hiring managers evaluate candidates for positions and the time involved in completing the interview process (not in scope of ClearView). The write patterns will likely not be very frequent.
+The write patterns are a function of the frequency at which hiring managers evaluate candidates for positions and the time involved in completing the interview process (not in scope of ClearView). The write patterns will likely be infrequent.
 
 The read patterns are again a function of Employer Admins reviewing these metrics. We assume that this is also not super frequent. There is however a regular cadence of the monthly report generation.
 
@@ -331,8 +331,9 @@ We chose simplicity, reliability and accuracy in the [architectural characterist
 
 ## Conclusion
 
-We believe our solution is simple to implement and go live with.
+We believe our solution is simple to implement and is optimized for going to market in a relatively short timeframe.
 It has enough modularity that things can be pulled out into separate services if required.
+
 While we didn't talk about a deployment model in detail, we envision this solution being implemented and deployed in a Kubernetes environment using managed services from AWS. Therefore, horizontal and vertical scaling should be possible to do with minimal effort.
 
 ## References
