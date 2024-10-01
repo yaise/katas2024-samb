@@ -226,7 +226,7 @@ It can further be broken on below components:
 #### C3: Vector Database
 Every Job Posting Id and Resume Id and their respective embeddings would each be represented by a vector in the database.
 Additionally, Each Vector would have additional attributes:
- - **vectorType** : candidate or job
+ - **vectorType** : candidate or jobPosting
 
 Most vector databases support euclidean, cosine and dotproduct. The selection of most efficient algorithms would require 
 running experiments on real data via some sort of canary in the matcher.  
